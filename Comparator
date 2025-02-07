@@ -1,0 +1,130 @@
+package ComparatorStudentExample;
+
+public class Stu {
+	int id;
+	String name;
+	int age;
+	float cgpa;
+	
+	public Stu(int id, String name, int age, float cgpa) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.cgpa = cgpa;
+	}
+}
+package ComparatorStudentExample;
+
+import java.util.Comparator;
+
+public class SortbyName implements Comparator<Stu>{
+
+	@Override
+	public int compare(Stu s1, Stu s2) {
+		return s1.name.compareTo(s2.name);
+	}
+}
+
+package ComparatorStudentExample;
+
+import java.util.Comparator;
+
+public class SortbyAGE implements Comparator<Stu>{
+
+	@Override
+	public int compare(Stu s1, Stu s2) {
+		if(s1.age== s2.age)
+		return 0;
+		else if(s1.age<s2.age)
+			return -1;
+		else
+			return 1;
+	}
+
+}
+
+
+package ComparatorStudentExample;
+
+import java.util.Comparator;
+
+public class SortbyCGPA implements Comparator<Stu>{
+	
+	@Override
+	public int compare(Stu s1, Stu s2) {
+		if(s1.cgpa== s2.cgpa)
+		return 0;
+		else if(s1.cgpa<s2.cgpa)
+			return -1;
+		else
+			return 1;
+	}	
+
+}
+package ComparatorStudentExample;
+
+import java.util.Comparator;
+
+public class SortbyId implements Comparator<Stu>{
+
+	@Override
+	public int compare(Stu s1, Stu s2) {
+		if(s1.id == s2.id)
+		return 0;
+		else if(s1.id<s2.id)
+			return -1;
+		else
+			return 1;
+	}
+}
+
+package ComparatorStudentExample;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List<Stu> s= new ArrayList<Stu>();
+		s.add(new Stu(10102,"Commander Manas",49,9.2F));
+		s.add(new Stu(19789,"Bhairava",43,9.4F));
+		s.add(new Stu(51919,"Bujji",33,9.6F));
+		s.add(new Stu(90201,"Yaskin",69,9.5F));
+		
+		System.out.println("Before Sorting:");
+	    for(Stu e:s)
+	    {
+	     System.out.println(e.id+"\t"+e.name+"\t"+e.cgpa+"\t"+e.age);
+	    }
+	    System.out.println("\n");
+	    System.out.println("Sort by Employee ID:");
+	    Collections.sort(s,new SortbyId());
+	    for(Stu e:s)
+	    {
+	    	System.out.println(e.id+"\t"+e.name+"\t"+e.cgpa+"\t"+e.age);
+	    }
+	    System.out.println("\n");
+	    System.out.println("Sort by Employee Name:");
+	    Collections.sort(s,new SortbyName());
+	    for(Stu e:s)
+	    {
+	    	System.out.println(e.id+"\t"+e.name+"\t"+e.cgpa+"\t"+e.age);
+	    }
+	    System.out.println("\n");
+	    System.out.println("Sort by Complex's CGPA:");
+	    Collections.sort(s,new SortbyCGPA());
+	    for(Stu e:s)
+	    {
+	    	System.out.println(e.id+"\t"+e.name+"\t"+e.cgpa+"\t"+e.age);
+	    }
+	    System.out.println("\n");
+	    System.out.println("Sort by AGE:\n");
+	    Collections.sort(s,new SortbyAGE());
+	    for(Stu e:s)
+	    {
+	    	System.out.println(e.id+"\t"+e.name+"\t"+e.cgpa+"\t"+e.age);
+	    }
+	}
+}
